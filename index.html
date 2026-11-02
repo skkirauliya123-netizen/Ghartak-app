@@ -1,1 +1,331 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Yeh rahi teri Google Verification ki line -->
+    <meta name="google-site-verification" content="B52OtdztPCo1bONkjMyqBS7DoXPECLX2GAM4VokJYfE" />
+
+    <title>GharTak (घरतक) - Gaon Ki Apni Dukan</title>
+    <!-- Baaki ka CSS aur code yahin se shuru hoga -->
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GharTak (घरतक) - Gaon Ki Apni Dukan</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+        body { background-color: #f4f5f7; color: #222; padding-bottom: 90px; }
+        header { background-color: #047857; color: white; position: sticky; top: 0; z-index: 40; }
+        .header-box { max-width: 450px; margin: 0 auto; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; }
+        .logo-title { font-size: 20px; font-weight: bold; }
+        .logo-tag { background-color: #facc15; color: #022c22; font-size: 11px; padding: 2px 6px; border-radius: 10px; margin-left: 4px; }
+        .sub-head { font-size: 11px; color: #a7f3d0; margin-top: 2px; }
+        .call-btn { background-color: #facc15; color: #022c22; text-decoration: none; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        .notice-bar { background-color: #facc15; color: #022c22; padding: 6px 10px; font-size: 11px; font-weight: bold; text-align: center; }
+        .container { max-width: 450px; margin: 0 auto; padding: 10px; }
+        .meter-box { background-color: white; padding: 10px; border-radius: 10px; border: 1px solid #a7f3d0; margin-bottom: 10px; }
+        .meter-flex { display: flex; justify-content: space-between; font-size: 11px; font-weight: bold; margin-bottom: 4px; color: #065f46; }
+        .meter-bg { background-color: #e5e7eb; height: 8px; border-radius: 10px; overflow: hidden; }
+        .meter-fill { background-color: #10b981; height: 100%; width: 0%; transition: width 0.3s ease; }
+        .search-box { width: 100%; padding: 10px; border-radius: 8px; border: 2px solid #047857; font-size: 13px; margin-bottom: 10px; outline: none; background: white; }
+        .cat-scroll { display: flex; gap: 6px; overflow-x: auto; margin-bottom: 10px; padding-bottom: 4px; }
+        .cat-btn { background: white; border: 1px solid #ddd; padding: 5px 12px; border-radius: 15px; font-size: 11px; font-weight: bold; white-space: nowrap; cursor: pointer; color: #444; }
+        .cat-btn.active { background: #047857; color: white; border-color: #047857; }
+        .combo-card { background: linear-gradient(to right, #f97316, #f59e0b); color: white; border-radius: 10px; padding: 12px; margin-bottom: 12px; position: relative; }
+        .combo-badge { background: #dc2626; color: white; font-size: 9px; font-weight: bold; padding: 2px 5px; border-radius: 3px; position: absolute; top: 8px; right: 8px; }
+        .combo-title { font-weight: bold; font-size: 14px; margin-bottom: 2px; }
+        .combo-desc { font-size: 11px; color: #ffedd5; margin-bottom: 8px; }
+        .combo-flex { display: flex; justify-content: space-between; align-items: center; }
+        .combo-btn { background: white; color: #ea580c; border: none; padding: 6px 10px; border-radius: 6px; font-weight: bold; font-size: 11px; cursor: pointer; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .card { background: white; border-radius: 10px; border: 1px solid #e5e7eb; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
+        .card-img { width: 100%; height: 100px; object-fit: cover; }
+        .card-body { padding: 8px; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
+        .card-title { font-size: 12px; font-weight: bold; color: #222; margin-bottom: 2px; }
+        .card-price { font-size: 11px; color: #666; }
+        .card-btn { margin-top: 6px; width: 100%; background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; padding: 6px; border-radius: 6px; font-weight: bold; font-size: 11px; cursor: pointer; }
+        .qty-controls { margin-top: 6px; display: flex; justify-content: space-between; align-items: center; background: #047857; color: white; border-radius: 6px; padding: 3px 6px; font-size: 11px; font-weight: bold; }
+        .qty-btn { background: #065f46; color: white; border: none; width: 20px; height: 20px; border-radius: 3px; font-weight: bold; cursor: pointer; }
+        .card-badge { position: absolute; top: 4px; left: 4px; background: #047857; color: white; font-size: 9px; font-weight: bold; padding: 2px 5px; border-radius: 3px; }
+        .bottom-bar { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid #ddd; padding: 10px 15px; z-index: 30; }
+        .bottom-flex { max-width: 450px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .order-btn { background: #059669; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-weight: bold; font-size: 13px; cursor: pointer; }
+        .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 50; display: none; justify-content: center; align-items: flex-end; }
+        .modal-content { background: white; width: 100%; max-width: 450px; border-radius: 12px 12px 0 0; padding: 15px; max-height: 80vh; display: flex; flex-direction: column; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding-bottom: 8px; }
+        .modal-list { overflow-y: auto; margin: 10px 0; max-height: 200px; }
+        .modal-item { display: flex; justify-content: space-between; align-items: center; background: #f9fafb; padding: 8px; border-radius: 6px; margin-bottom: 6px; font-size: 11px; }
+        .custom-input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 6px; font-size: 11px; margin-top: 4px; outline: none; }
+        .wa-send-btn { width: 100%; background: #059669; color: white; border: none; padding: 10px; border-radius: 8px; font-weight: bold; margin-top: 10px; cursor: pointer; font-size: 13px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-box">
+            <div>
+                <div class="logo-title">GharTak <span class="logo-tag">घरतक</span></div>
+                <div class="sub-head">CEO: Sachin Kumar | Helpline: 7830320211</div>
+            </div>
+            <a href="tel:7830320211" class="call-btn">Call Karein</a>
+        </div>
+        <div class="notice-bar">
+            📢 Samaan list mein nahi hai? Call/WhatsApp karein: 7830320211
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Delivery Meter -->
+        <div class="meter-box">
+            <div class="meter-flex">
+                <span id="meterText">Free Delivery Ke Liye ₹150 Ka Samaan Add Karein</span>
+                <span id="meterAmount">₹0 / ₹150</span>
+            </div>
+            <div class="meter-bg">
+                <div id="meterFill" class="meter-fill"></div>
+            </div>
+        </div>
+
+        <!-- Search Bar -->
+        <input type="text" id="searchInput" oninput="renderUI()" placeholder="Khojhein: Aalu, Tamatar, Surf, Sabun..." class="search-box">
+
+        <!-- Categories -->
+        <div class="cat-scroll">
+            <button onclick="setCategory('all')" id="btn-all" class="cat-btn active">Sabhi Samaan</button>
+            <button onclick="setCategory('sabzi')" id="btn-sabzi" class="cat-btn">Taaza Sabzi</button>
+            <button onclick="setCategory('fruit')" id="btn-fruit" class="cat-btn">Taaza Phal</button>
+            <button onclick="setCategory('grocery')" id="btn-grocery" class="cat-btn">Daily Grocery</button>
+        </div>
+
+        <!-- Combo Basket -->
+        <div class="combo-card">
+            <div class="combo-badge">🔥 Offer</div>
+            <div class="combo-title">Daily Sabzi Combo Basket</div>
+            <div class="combo-desc">Aalu (2kg) + Pyaz (1kg) + Tamatar (1kg) + Hari Mirch (250g)</div>
+            <div class="combo-flex">
+                <div>
+                    <span style="font-size:16px; font-weight:bold;">₹140</span>
+                    <span style="font-size:11px; text-decoration:line-through; opacity:0.8; margin-left:3px;">₹145</span>
+                    <span style="font-size:9px; background:white; color:#ea580c; font-weight:bold; padding:2px 4px; border-radius:3px; margin-left:3px;">₹5 Bachat</span>
+                </div>
+                <button onclick="addToCart(101)" class="combo-btn">Basket Add Karein</button>
+            </div>
+        </div>
+
+        <!-- Grid -->
+        <div id="productGrid" class="grid"></div>
+    </div>
+
+    <!-- Sticky Bottom Bar -->
+    <div class="bottom-bar">
+        <div class="bottom-flex">
+            <div>
+                <div style="font-size:11px; color:#666;">Kul Samaan: <b id="cartCount" style="color:#047857;">0 Items</b></div>
+                <div style="font-size:15px; font-weight:bold;">Total: <span id="cartTotal" style="color:#047857;">₹0</span></div>
+            </div>
+            <button onclick="openModal()" class="order-btn">Order Karein</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="font-weight:bold; font-size:14px;">Aapka Order Basket</h3>
+                <span onclick="closeModal()" style="font-size:18px; cursor:pointer; font-weight:bold;">&times;</span>
+            </div>
+            <div id="modalList" class="modal-list"></div>
+            <div style="background:#f9fafb; padding:8px; border-radius:6px; margin-bottom:8px;">
+                <label style="font-size:10px; font-weight:bold; color:#444;">Jo list mein nahi hai, yahan likhein:</label>
+                <input type="text" id="customInput" placeholder="Jaise: 1 packet namak, 10 rs wali biscoot..." class="custom-input">
+            </div>
+            <div style="font-size:11px; border-top:1px solid #ddd; padding-top:6px;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+                    <span>Subtotal:</span><b id="subtotalVal">₹0</b>
+                </div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+                    <span>Delivery Fee:</span><b id="deliveryVal">₹0</b>
+                </div>
+                <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:bold; border-top:1px solid #ddd; padding-top:4px; color:#047857;">
+                    <span>Total Amount:</span><span id="grandVal">₹0</span>
+                </div>
+            </div>
+            <button onclick="sendWhatsApp()" class="wa-send-btn">WhatsApp Par Order Bhejein</button>
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            { id: 101, name: "Daily Sabzi Combo Basket", price: 140, unit: "combo", category: "sabzi", image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=300", badge: "₹5 Bachat" },
+            { id: 1, name: "Taaza Lal Tamatar", price: 30, unit: "kg", category: "sabzi", image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=300" },
+            { id: 2, name: "Naye Aalu (Potato)", price: 15, unit: "kg", category: "sabzi", image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=300" },
+            { id: 3, name: "Desi Pyaz (Onion)", price: 35, unit: "kg", category: "sabzi", image: "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=300" },
+            { id: 4, name: "Phool Gobi", price: 30, unit: "piece", category: "sabzi", image: "https://images.unsplash.com/photo-1568584711075-3d021a7c3ca3?w=300" },
+            { id: 5, name: "Hari Matar (Green Peas)", price: 45, unit: "kg", category: "sabzi", image: "https://images.unsplash.com/photo-1587735243615-c03f25aaff15?w=300" },
+            { id: 6, name: "Meethi Gajar", price: 30, unit: "kg", category: "sabzi", image: "https://images.unsplash.com/photo-1598170845058-12f9a4aef0c0?w=300" },
+            { id: 7, name: "Taaza Palak", price: 20, unit: "kg", category: "sabzi", image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=300" },
+            { id: 8, name: "Hari Mirch", price: 15, unit: "250g", category: "sabzi", image: "https://images.unsplash.com/photo-1588252303782-cb80119abd6d?w=300" },
+            { id: 9, name: "Adrak (Ginger)", price: 25, unit: "250g", category: "sabzi", image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=300" },
+            { id: 10, name: "Lahsun (Garlic)", price: 40, unit: "250g", category: "sabzi", image: "https://images.unsplash.com/photo-1540148426945-6cf22a6b2383?w=300" },
+            { id: 11, name: "Hara Dhaniya", price: 10, unit: "100g", category: "sabzi", image: "https://images.unsplash.com/photo-1588879460418-e215037d04bc?w=300" },
+            { id: 12, name: "Meetha Kela (Banana)", price: 40, unit: "kg", category: "fruit", image: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=300", badge: "Per KG Rate" },
+            { id: 13, name: "Kashmiri Seb", price: 100, unit: "kg", category: "fruit", image: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=300" },
+            { id: 14, name: "Taaza Amrood", price: 40, unit: "kg", category: "fruit", image: "https://images.unsplash.com/photo-1536511135882-9658514582f1?w=300" },
+            { id: 15, name: "Santra / Kinnow", price: 60, unit: "kg", category: "fruit", image: "https://images.unsplash.com/photo-1547514701-42782101795e?w=300" },
+            { id: 16, name: "Nahane Ka Sabun (Combo)", price: 36, unit: "4 Pack", category: "grocery", image: "https://images.unsplash.com/photo-1607006482140-625807920a4b?w=300", badge: "₹36 Ke 4" },
+            { id: 17, name: "Nahane Ka Sabun (Single)", price: 10, unit: "piece", category: "grocery", image: "https://images.unsplash.com/photo-1607006482140-625807920a4b?w=300" },
+            { id: 18, name: "Surf Excel", price: 10, unit: "packet", category: "grocery", image: "https://images.unsplash.com/photo-1585842378054-ee2e52f94ba2?w=300" },
+            { id: 19, name: "Tide Powder", price: 10, unit: "packet", category: "grocery", image: "https://images.unsplash.com/photo-1585842378054-ee2e52f94ba2?w=300" },
+            { id: 20, name: "Vim Bar", price: 10, unit: "piece", category: "grocery", image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=300" },
+            { id: 21, name: "Shakkari Chini", price: 70, unit: "kg", category: "grocery", image: "https://images.unsplash.com/photo-1581441363689-1f3c3c414635?w=300" },
+            { id: 22, name: "Chai Patti", price: 30, unit: "100g", category: "grocery", image: "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=300" },
+            { id: 23, name: "Sarson Tel", price: 195, unit: "Litre", category: "grocery", image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=300" },
+            { id: 24, name: "Chakki Fresh Aata", price: 320, unit: "10 kg", category: "grocery", image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=300" }
+        ];
+
+        let cart = {};
+        let activeCat = 'all';
+
+        function renderUI() {
+            const grid = document.getElementById('productGrid');
+            const searchInput = document.getElementById('searchInput');
+            const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+            
+            grid.innerHTML = '';
+
+            const filtered = products.filter(p => {
+                const catMatch = (activeCat === 'all' || p.category === activeCat);
+                const searchMatch = query === '' || p.name.toLowerCase().includes(query);
+                return catMatch && searchMatch;
+            });
+
+            if(filtered.length === 0) {
+                grid.innerHTML = '<div style="grid-column: span 2; text-align:center; padding: 15px; background: white; border-radius: 8px; font-size:12px;">Samaan nahi mila! Direct 7830320211 par call karein.</div>';
+                return;
+            }
+
+            filtered.forEach(p => {
+                const qty = cart[p.id] || 0;
+                const badge = p.badge ? `<div class="card-badge">${p.badge}</div>` : '';
+                grid.innerHTML += `
+                    <div class="card">
+                        ${badge}
+                        <img src="${p.image}" class="card-img">
+                        <div class="card-body">
+                            <div>
+                                <div class="card-title">${p.name}</div>
+                                <div class="card-price">₹${p.price} / ${p.unit}</div>
+                            </div>
+                            ${qty === 0 ? 
+                                `<button onclick="addToCart(${p.id})" class="card-btn">+ ADD</button>` : 
+                                `<div class="qty-controls">
+                                    <button class="qty-btn" onclick="updateQty(${p.id}, -1)">-</button>
+                                    <span>${qty}</span>
+                                    <button class="qty-btn" onclick="updateQty(${p.id}, 1)">+</button>
+                                </div>`
+                            }
+                        </div>
+                    </div>
+                `;
+            });
+
+            updateTotals();
+        }
+
+        function setCategory(cat) {
+            activeCat = cat;
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('btn-' + cat).classList.add('active');
+            renderUI();
+        }
+
+        function addToCart(id) { cart[id] = (cart[id] || 0) + 1; renderUI(); }
+        function updateQty(id, change) {
+            if(cart[id]) {
+                cart[id] += change;
+                if(cart[id] <= 0) delete cart[id];
+            }
+            renderUI();
+        }
+
+        function updateTotals() {
+            let total = 0, count = 0;
+            for(let id in cart) {
+                let p = products.find(x => x.id == id);
+                if(p) { total += p.price * cart[id]; count += cart[id]; }
+            }
+            document.getElementById('cartCount').innerText = count + ' Items';
+            document.getElementById('cartTotal').innerText = '₹' + total;
+            document.getElementById('meterAmount').innerText = '₹' + total + ' / ₹150';
+            
+            let bar = document.getElementById('meterFill');
+            let txt = document.getElementById('meterText');
+            if(total >= 150) {
+                bar.style.width = '100%'; bar.style.backgroundColor = '#facc15';
+                txt.innerHTML = '🎉 Free Delivery Unlocked!';
+            } else {
+                bar.style.width = Math.min((total/150)*100, 100) + '%';
+                bar.style.backgroundColor = '#10b981';
+                txt.innerText = 'Free Delivery Ke Liye ₹' + (150 - total) + ' Ka Samaan Aur Add Karein';
+            }
+        }
+
+        function openModal() {
+            let list = document.getElementById('modalList');
+            list.innerHTML = '';
+            let subtotal = 0;
+            for(let id in cart) {
+                let p = products.find(x => x.id == id);
+                if(p) {
+                    let amt = p.price * cart[id];
+                    subtotal += amt;
+                    list.innerHTML += `
+                        <div class="modal-item">
+                            <div><b>${p.name}</b><br>₹${p.price} × ${cart[id]} = ₹${amt}</div>
+                            <div style="display:flex; gap:6px; align-items:center;">
+                                <button onclick="updateQty(${p.id}, -1); openModal();" style="width:20px;">-</button>
+                                <b>${cart[id]}</b>
+                                <button onclick="updateQty(${p.id}, 1); openModal();" style="width:20px;">+</button>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+            let delivery = (subtotal >= 150 || subtotal === 0) ? 0 : 10;
+            document.getElementById('subtotalVal').innerText = '₹' + subtotal;
+            document.getElementById('deliveryVal').innerText = delivery === 0 ? 'FREE' : '₹' + delivery;
+            document.getElementById('grandVal').innerText = '₹' + (subtotal + delivery);
+            document.getElementById('cartModal').style.display = 'flex';
+        }
+
+        function closeModal() { document.getElementById('cartModal').style.display = 'none'; }
+
+        function sendWhatsApp() {
+            let subtotal = 0, msg = "*Naya Order - GharTak (घरतक)*\n------------------------------\n";
+            for(let id in cart) {
+                let p = products.find(x => x.id == id);
+                if(p) {
+                    let amt = p.price * cart[id];
+                    subtotal += amt;
+                    msg += `• ${p.name} (${p.unit}) x ${cart[id]} = ₹${amt}\n`;
+                }
+            }
+            let custom = document.getElementById('customInput').value.trim();
+            if(custom) msg += `\n*Extra Demand:* ${custom}\n`;
+            
+            let delivery = (subtotal >= 150) ? 0 : 10;
+            msg += `------------------------------\n*Subtotal:* ₹${subtotal}\n*Delivery:* ${delivery === 0 ? 'FREE' : '₹'+delivery}\n*Total:* ₹${subtotal + delivery}\n\nDeliver Kar Dein!`;
+            
+            window.open('https://wa.me/917830320211?text=' + encodeURIComponent(msg), '_blank');
+        }
+
+        // Initial Load Call
+        renderUI();
+    </script>
+</body>
+</html>
 
